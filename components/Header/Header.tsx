@@ -7,7 +7,7 @@ import { MoonIcon, SunIcon } from "@primer/octicons-react";
 import { useTheme } from "next-themes";
 import { animated, useSpring } from "@react-spring/web";
 
-import { logo, link1, link2, link3, themeButton } from "./animations";
+import { logo, link1, link2, link3, themeButton } from "./.anim";
 
 export default function Header() {
   const { theme, setTheme } = useTheme();
