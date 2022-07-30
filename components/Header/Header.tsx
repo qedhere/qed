@@ -51,7 +51,7 @@ export default function Header() {
             </animated.div>
             <div className="grow flex justify-center items-center gap-8 invisible xs:visible">
               <HeaderLink style={link1Props} text="Projects" href="#" />
-              <HeaderLink style={link2Props} text="About" href="#" />
+              <HeaderLink style={link2Props} text="Blog" href="#" />
               <HeaderLink style={link3Props} text="Contact" href="#" />
             </div>
             <div className="flex gap-5">
