@@ -15,11 +15,12 @@ export default function Landing() {
       style={{
         display: "flex",
         zIndex: 200,
+        width: "fit-content",
       }}
     >
-      <div className="xs:pl-8 pl-5 md:pl-15 xl:pl-20 mt-[200px] xs:mt-[200px] md:mt-[200px] lg:mt-[200px] xl:mt-[250px] max-w-[800px]">
+      <div className="xs:pl-8 pl-5 pr-5 xs:pr-8 md:pl-15 xl:pl-20 mt-[150px] xs:mt-[200px] md:mt-[200px] lg:mt-[200px] xl:mt-[250px] max-w-[800px]">
         <animated.div
-          className="sm:text-5xl md:text-6xl lg:text-7xl xs:text-5xl text-4xl xs:font-black font-bold tracking-tight select-none pl-5s pr-5 w-full"
+          className="sm:text-5xl md:text-6xl lg:text-7xl xs:text-5xl text-4xl xs:font-black font-bold tracking-tight select-none pl-5s pr-6 w-full"
           style={mainTitleProps}
         >
           For those who love{" "}
@@ -27,8 +28,9 @@ export default function Landing() {
             the truth.
           </span>
         </animated.div>
-        <div className="mt-10 md:mt-20">
-          
+        <div className="mt-10 md:mt-20 flex gap-5 justify-center xs:justify-start flex-wrap w-full">
+          <Button>Learn More</Button>
+          <Button type="secondary">Contact us</Button>
         </div>
       </div>
     </ParallaxLayer>

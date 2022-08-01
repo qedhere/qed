@@ -6,6 +6,7 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 import Landing from "@components/pages/index/Landing";
 import GridBackground from "@components/pages/index/GridBackground";
+import Explore from "@components/pages/index/Explore";
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -39,11 +40,18 @@ const Home: NextPage = () => {
   return (
     <div>
       <Header />
-      <Parallax pages={5} style={{ top: "0", left: "0" }} id="body">
+      <Parallax pages={2} style={{ top: "0", left: "0" }} id="body">
         <Landing />
         <GridBackground />
-        <animated.div style={boxAnimProps}>
-          <ParallaxLayer className={styles.Home} offset={0} speed={2}>
+        <animated.div
+          style={boxAnimProps}
+        >
+          <ParallaxLayer
+            className={styles.Home}
+            offset={0}
+            speed={2}
+            style={{ backgroundColor: "transparent" }}
+          >
             <Canvas style={{ backgroundColor: "transparent" }}>
               <OrbitControls enableZoom={false} enablePan={false} />
               {currentTheme == "dark" ? (
@@ -88,7 +96,11 @@ const Box = () => {
   return (
     // @ts-ignore
     <mesh rotation={[10, 10, 20]} ref={mesh}>
-      <boxBufferGeometry attach="geometry" args={[1.5, 1.5, 1.5]} />
+      <boxBufferGeometry
+        attach="geometry"
+        args={[1.5, 1.5, 1.5]}
+        style={{ backgroundColor: "transparent" }}
+      />
       {currentTheme == "dark" ? (
         <meshStandardMaterial color="#111111" />
       ) : (
