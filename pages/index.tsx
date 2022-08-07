@@ -6,7 +6,9 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 import Landing from "@components/pages/index/Landing";
 import GridBackground from "@components/pages/index/GridBackground";
-import Explore from "@components/pages/index/Explore";
+import { CommentDiscussionIcon } from "@primer/octicons-react";
+import Faq from "@components/pages/index/Faq";
+import End from "@components/pages/index/End";
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -40,12 +42,10 @@ const Home: NextPage = () => {
   return (
     <div>
       <Header />
-      <Parallax pages={2} style={{ top: "0", left: "0" }} id="body">
+      <Parallax pages={2.73} style={{ top: "0", left: "0" }} id="body">
         <Landing />
         <GridBackground />
-        <animated.div
-          style={boxAnimProps}
-        >
+        <animated.div style={boxAnimProps}>
           <ParallaxLayer
             className={styles.Home}
             offset={0}
@@ -76,6 +76,25 @@ const Home: NextPage = () => {
             </Canvas>
           </ParallaxLayer>
         </animated.div>
+        <ParallaxLayer
+          sticky={{ start: 0.9, end: 1.42 }}
+          speed={4}
+          style={{ pointerEvents: "none" }}
+        >
+          <div className="w-full">
+            <div className="h-[120px] w-full dark:bg-black-900 bg-white"></div>
+            <div className="flex justify-center dark:bg-black-900 bg-white">
+              <CommentDiscussionIcon size={16} />
+            </div>
+            <div className="sm:h-[64px] h-[32px] w-full dark:bg-black-900 bg-white"></div>
+            <div className="text-center font-['urbanist'] w-full tracking-[0.2rem] font-semibold text-sm dark:bg-black-900 bg-white">
+              FREQUENTLY ASKED QUESTIONS
+            </div>
+            <div className="h-[128px] w-full bg-gradient-to-b dark:from-black-900 from-white to-transparent"></div>
+          </div>
+        </ParallaxLayer>
+        <Faq />
+        <End />
       </Parallax>
     </div>
   );

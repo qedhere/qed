@@ -44,14 +44,14 @@ export default function Header() {
         <header className="w-[1200px] h-[64px] duration-100">
           <div className="flex pl-4 items-center h-[64px] pr-4">
             <animated.div
-              className="text-2xl font-black tracking-wide"
+              className="text-2xl font-black tracking-wide flex items-center gap-2"
               style={logoProps}
             >
               QED
             </animated.div>
             <div className="grow flex justify-center items-center gap-8 invisible xs:visible">
               <HeaderLink style={link1Props} text="Projects" href="#" />
-              <HeaderLink style={link2Props} text="Blog" href="#" />
+              <HeaderLink style={link2Props} text="Docs" href="#" />
               <HeaderLink style={link3Props} text="Contact" href="#" />
             </div>
             <div className="flex gap-5">

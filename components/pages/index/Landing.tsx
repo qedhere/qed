@@ -29,8 +29,10 @@ export default function Landing() {
           </span>
         </animated.div>
         <div className="mt-10 md:mt-20 flex gap-5 justify-center xs:justify-start flex-wrap w-full">
-          <Button>Learn More</Button>
-          <Button type="secondary">Contact us</Button>
+          <Button delay={400}>Learn More</Button>
+          <Button type="secondary" delay={500}>
+            Contact us
+          </Button>
         </div>
       </div>
     </ParallaxLayer>
