@@ -5,8 +5,15 @@ import { animated, useSpring } from "@react-spring/web";
 import Button from "@components/Button/Button";
 import { mainTitle } from "./.anim";
 
+import { useRouter } from "next/router";
+
 export default function Landing() {
   const mainTitleProps = useSpring(mainTitle);
+  const router = useRouter();
+
+  const learnMore = () => {
+    router.push("/docs");
+  };
 
   return (
     <ParallaxLayer
@@ -29,7 +36,9 @@ export default function Landing() {
           </span>
         </animated.div>
         <div className="mt-10 md:mt-20 flex gap-5 justify-center xs:justify-start flex-wrap w-full">
-          <Button delay={400}>Learn More</Button>
+          <Button delay={400} onClick={learnMore}>
+            Learn More
+          </Button>
           <Button type="secondary" delay={500}>
             Contact us
           </Button>

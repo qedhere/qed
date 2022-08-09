@@ -9,6 +9,7 @@ import "@fontsource/urbanist/900.css";
 
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
+import NextNProgress from "nextjs-progressbar";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -18,6 +19,14 @@ function MyApp({ Component, pageProps }: AppProps) {
       storageKey="theme"
       enableSystem={true}
     >
+      <NextNProgress
+        color="#0070F3"
+        startPosition={0.3}
+        stopDelayMs={0}
+        height={3}
+        showOnShallow={true}
+        options={{ showSpinner: false }}
+      />
       <Component {...pageProps} />
     </ThemeProvider>
   );

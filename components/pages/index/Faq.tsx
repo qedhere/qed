@@ -14,7 +14,7 @@ export default function Explore() {
         width: "100%",
         alignItems: "start",
       }}
-      factor={0.2}
+      factor={0.1}
     >
       <div className="xs:pl-8 pl-5 pr-5 xs:pr-8 md:pl-15 xl:pl-20 w-full mt-5 z-50 w-full">
         <div className="flex justify-center w-full">

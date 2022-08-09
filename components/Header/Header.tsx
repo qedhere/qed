@@ -9,7 +9,7 @@ import { animated, useSpring } from "@react-spring/web";
 
 import { logo, link1, link2, link3, themeButton } from "./.anim";
 
-export default function Header() {
+export default function Header(props: any) {
   const { theme, setTheme } = useTheme();
   const [border, setBorder] = React.useState<any | string>("");
   const [currentTheme, setCurrentTheme] = React.useState<any | null>(null);
@@ -35,43 +35,80 @@ export default function Header() {
       }
     };
   } catch {}
-
-  return (
-    <div className="fixed w-full z-50 select-none">
-      <div
-        className={`flex justify-center flex-shrink dark:bg-[rgba(0,0,0,0.5)] bg-[rgba(255,255,255,0.5)] backdrop-blur-[6px] duration-100 ${border} dark:border-[rgba(255,255,255,0.05)] border-[rgba(0,0,0,0.05)]`}
-      >
-        <header className="w-[1200px] h-[64px] duration-100">
-          <div className="flex pl-4 items-center h-[64px] pr-4">
-            <animated.div
-              className="text-2xl font-black tracking-wide flex items-center gap-2"
-              style={logoProps}
-            >
-              QED
-            </animated.div>
-            <div className="grow flex justify-center items-center gap-8 invisible xs:visible">
-              <HeaderLink style={link1Props} text="Projects" href="#" />
-              <HeaderLink style={link2Props} text="Docs" href="#" />
-              <HeaderLink style={link3Props} text="Contact" href="#" />
+  if (props.noanim) {
+    return (
+      <div className="fixed w-full z-50 select-none">
+        <div
+          className={`flex justify-center flex-shrink dark:bg-[rgba(0,0,0,0.5)] bg-[rgba(255,255,255,0.5)] backdrop-blur-[6px] duration-100 ${border} dark:border-[rgba(255,255,255,0.05)] border-[rgba(0,0,0,0.05)]`}
+        >
+          <header className="w-[1200px] h-[64px] duration-100">
+            <div className="flex pl-4 items-center h-[64px] pr-4">
+              <div className="text-2xl font-black tracking-wide flex items-center gap-2">
+                QED
+              </div>
+              <div className="grow flex justify-center items-center gap-8 invisible xs:visible">
+                <HeaderLink text="Home" href="/" noanim />
+                <HeaderLink text="Docs" href="/docs" noanim />
+                <HeaderLink text="Contact" href="#" noanim />
+              </div>
+              <div className="flex gap-5">
+                {currentTheme == "light" ? (
+                  <HeaderIconButton
+                    text={<SunIcon size={16} />}
+                    onClick={() => setTheme("dark")}
+                    noanim
+                  />
+                ) : (
+                  <HeaderIconButton
+                    text={<MoonIcon size={16} />}
+                    onClick={() => setTheme("light")}
+                    noanim
+                  />
+                )}
+              </div>
             </div>
-            <div className="flex gap-5">
-              {currentTheme == "light" ? (
-                <HeaderIconButton
-                  text={<SunIcon size={16} />}
-                  onClick={() => setTheme("dark")}
-                  style={themeButtonProps}
-                />
-              ) : (
-                <HeaderIconButton
-                  text={<MoonIcon size={16} />}
-                  onClick={() => setTheme("light")}
-                  style={themeButtonProps}
-                />
-              )}
-            </div>
-          </div>
-        </header>
+          </header>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    return (
+      <div className="fixed w-full z-50 select-none">
+        <div
+          className={`flex justify-center flex-shrink dark:bg-[rgba(0,0,0,0.5)] bg-[rgba(255,255,255,0.5)] backdrop-blur-[6px] duration-100 ${border} dark:border-[rgba(255,255,255,0.05)] border-[rgba(0,0,0,0.05)]`}
+        >
+          <header className="w-[1200px] h-[64px] duration-100">
+            <div className="flex pl-4 items-center h-[64px] pr-4">
+              <animated.div
+                className="text-2xl font-black tracking-wide flex items-center gap-2"
+                style={logoProps}
+              >
+                QED
+              </animated.div>
+              <div className="grow flex justify-center items-center gap-8 invisible xs:visible">
+                <HeaderLink style={link1Props} text="Home" href="/" />
+                <HeaderLink style={link2Props} text="Docs" href="/docs" />
+                <HeaderLink style={link3Props} text="Contact" href="#" />
+              </div>
+              <div className="flex gap-5">
+                {currentTheme == "light" ? (
+                  <HeaderIconButton
+                    text={<SunIcon size={16} />}
+                    onClick={() => setTheme("dark")}
+                    style={themeButtonProps}
+                  />
+                ) : (
+                  <HeaderIconButton
+                    text={<MoonIcon size={16} />}
+                    onClick={() => setTheme("light")}
+                    style={themeButtonProps}
+                  />
+                )}
+              </div>
+            </div>
+          </header>
+        </div>
+      </div>
+    );
+  }
 }

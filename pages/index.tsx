@@ -42,7 +42,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <Header />
-      <Parallax pages={2.73} style={{ top: "0", left: "0" }} id="body">
+      <Parallax pages={2.72} style={{ top: "0", left: "0" }} id="body">
         <Landing />
         <GridBackground />
         <animated.div style={boxAnimProps}>
