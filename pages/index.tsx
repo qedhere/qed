@@ -25,6 +25,11 @@ const Home: NextPage = () => {
     if (typeof theme != undefined) {
       setCurrentTheme(theme);
     }
+    fetch("/api/docs?route=index.mdx")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   }, [theme]);
   const boxAnimProps = useSpring({
     to: {
