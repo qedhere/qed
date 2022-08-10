@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@docs/*": ["pages/docs/*"]
+    }
+  },
+  "exclude": ["node_modules"]
+}

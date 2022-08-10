@@ -1,9 +1,9 @@
-import Layout from "@docs/Layout";
+---
+ok: "ok"
+---
 
-export const meta = {
-  title: "test",
-};
+import Layout from "@pages/docs/_layout";
 
-Some content
+Test page
 
-export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
+export default ({ children }) => <Layout>{children}</Layout>;

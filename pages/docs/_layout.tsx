@@ -1,8 +1,10 @@
 import * as React from "react";
+import { NextPage } from "next";
 
 import Header from "@components/Header/Header";
 
-export default function Layout(props: any) {
+const Layout: NextPage = (props: any) => {
+  console.log(props);
   return (
     <div>
       <Header noanim />
@@ -10,7 +12,7 @@ export default function Layout(props: any) {
         <div className="pt-[256px] max-w-[1000px] w-full pr-4 pl-4 flex">
           <article className="prose prose-sm md:prose-md lg:prose-lg prose-black dark:prose-invert justify-center grow">
             <h1 className="tracking-tight" style={{ padding: 0, margin: 0 }}>
-              {props.meta.title}
+              a
             </h1>
             <hr />
             {props.children}
@@ -19,4 +21,6 @@ export default function Layout(props: any) {
       </div>
     </div>
   );
-}
+};
+
+export default Layout;

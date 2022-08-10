@@ -1,11 +1,12 @@
 /** @type {import('next').NextConfig} */
 
 import withMDX from "@next/mdx";
+import remarkFrontmatter from "remark-frontmatter";
 
 const NextConfig = withMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkFrontmatter],
     rehypePlugins: [],
   },
 });
@@ -15,5 +16,13 @@ export default NextConfig({
   reactStrictMode: true,
   images: {
     domains: ["github.com"],
+  },
+  async rewrites() {
+    return [
+      {
+        source: "/api/:path*",
+        destination: "http://localhost:3000/api/:path*", // Proxy to Backend
+      },
+    ];
   },
 });
