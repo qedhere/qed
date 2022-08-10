@@ -4,7 +4,6 @@ import { NextPage } from "next";
 import Header from "@components/Header/Header";
 
 const Layout: NextPage = (props: any) => {
-  console.log(props);
   return (
     <div>
       <Header noanim />

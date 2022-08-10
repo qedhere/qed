@@ -1,11 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import error from "@api/error_codes.json";
-import { parseFrontmatter } from "@lib/parseFrontmatter";
-import { docsTree } from "@lib/getDirTree";
+import { parseFrontmatter } from "@lib/parseFrontmatter.js";
+import { getDirTree } from "@lib/getDirTree.js";
 
 const Docs = (req: NextApiRequest, res: NextApiResponse) => {
   if (req.query.route == undefined) {
-    res.send(JSON.stringify(docsTree, null, 2))
+    res.send(JSON.stringify(getDirTree(), null, 2));
   } else {
     const fetchData = () => {
       const frontmatter = parseFrontmatter(req.query!.route!.toString());

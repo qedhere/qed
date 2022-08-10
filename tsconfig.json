@@ -18,11 +18,14 @@
     "paths": {
       "@components/*": ["components/*"],
       "@styles/*": ["styles/*"],
-      "@docs/*": ["components/@docs/*"],
+      "@docs/*": ["docs/*"],
       "@pages/*": ["pages/*"],
       "@lib/*": ["lib/*"],
       "@api/*": ["api/*"]
     }
+  },
+  "ts-node": {
+    "esm": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
