@@ -25,7 +25,7 @@ const Home: NextPage = () => {
     if (typeof theme != undefined) {
       setCurrentTheme(theme);
     }
-    fetch("/api/docs?route=index.mdx")
+    fetch("/api/docs?route=/docs")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
