@@ -10,7 +10,7 @@ const Docs = (req: NextApiRequest, res: NextApiResponse) => {
     const fetchData = () => {
       const frontmatter = parseFrontmatter(req.query!.route!.toString());
       if (frontmatter == undefined) {
-        res.send(error.ERR_INVALID_ARG + "?route=" + req.query.route);
+        res.send(error.ERR_INVALID_ROUTE);
       } else {
         res.send(JSON.stringify(frontmatter, null, 2));
       }
