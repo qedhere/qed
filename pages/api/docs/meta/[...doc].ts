@@ -13,20 +13,14 @@ const MetaDoc = (req: NextApiRequest, res: NextApiResponse) => {
 
       if (matter == undefined) {
         res.send(
-          error.ERR_INVALID_ROUTE +
-            "`/" +
-            Array(req.query.doc!).toString().replace(",", "/") +
-            "`"
+          error.ERR_INVALID_ROUTE
         );
       } else {
         res.send(matter);
       }
     } catch {
       res.send(
-        error.ERR_INVALID_ROUTE +
-          "`/" +
-          Array(req.query.doc!).toString().replace(",", "/") +
-          "`"
+        error.ERR_INVALID_ROUTE
       );
     }
   } else if (Array(req.query.doc!).length == 2) {
@@ -41,28 +35,19 @@ const MetaDoc = (req: NextApiRequest, res: NextApiResponse) => {
 
       if (matter == undefined) {
         res.send(
-          error.ERR_INVALID_ROUTE +
-            "`/" +
-            Array(req.query.doc!).toString().replace(",", "/") +
-            "`"
+          error.ERR_INVALID_ROUTE
         );
       } else {
         res.send(matter);
       }
     } catch {
       res.send(
-        error.ERR_INVALID_ROUTE +
-          "`/" +
-          Array(req.query.doc!).toString().replace(",", "/") +
-          "`"
+        error.ERR_INVALID_ROUTE
       );
     }
   } else {
     res.send(
-      error.ERR_INVALID_ROUTE +
-        "`/" +
-        Array(req.query.doc!).toString().replace(",", "/") +
-        "`"
+      error.ERR_INVALID_ROUTE
     );
   }
 };
