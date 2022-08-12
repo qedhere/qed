@@ -10,22 +10,12 @@ const Docs = (req: NextApiRequest, res: NextApiResponse) => {
     const data = JSON.stringify(fileTree[doc.toString()], null, 2);
 
     if (data == undefined) {
-      res.send(
-        error.ERR_INVALID_ROUTE +
-          "`/" +
-          req.query.doc!.toString().replace(",", "/") +
-          "`"
-      );
+      res.send(error.ERR_INVALID_ROUTE);
     } else {
       res.send(data);
     }
   } catch {
-    res.send(
-      error.ERR_INVALID_ROUTE +
-        "`/" +
-        req.query.doc!.toString().replace(",", "/") +
-        "`"
-    );
+    res.send(error.ERR_INVALID_ROUTE);
   }
 };
 
