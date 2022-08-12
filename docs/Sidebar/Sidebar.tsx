@@ -13,12 +13,7 @@ import {
 
 export default function Sidebar() {
   const [children, setChildren] = React.useState<Object>({});
-  const [icons, setIcons] = React.useState<Object>({
-    "/api": <GitCommitIcon />,
-    "/contributing": <CodeOfConductIcon />,
-    "/security": <RepoLockedIcon />,
-    "/community": <CommentDiscussionIcon />,
-  });
+  const [icons, setIcons] = React.useState<Object>();
 
   const fetchData = async () => {
     await fetch("/api/docs/sidebar")
@@ -30,6 +25,12 @@ export default function Sidebar() {
 
   React.useEffect(() => {
     fetchData();
+    setIcons({
+      "/api": <GitCommitIcon />,
+      "/contributing": <CodeOfConductIcon />,
+      "/security": <RepoLockedIcon />,
+      "/community": <CommentDiscussionIcon />,
+    });
   }, []);
 
   return (
@@ -47,18 +48,33 @@ export default function Sidebar() {
                 return (
                   // @ts-ignore
                   <Section key={children[child].key}>
-                    {icons[children[child].key]}
-                    {children[child].text}
+                    {
+                      // @ts-ignore
+                      icons[children[child].key]
+                    }
+                    {
+                      // @ts-ignore
+                      children[child].text
+                    }
                   </Section>
                 );
               } else {
                 return (
                   // @ts-ignore
                   <SidebarLink
-                    href={children[child].key}
-                    key={children[child].key}
+                    href={
+                      // @ts-ignore
+                      children[child].key
+                    }
+                    key={
+                      // @ts-ignore
+                      children[child].key
+                    }
                   >
-                    {children[child].name}
+                    {
+                      // @ts-ignore
+                      children[child].name
+                    }
                   </SidebarLink>
                 );
               }
