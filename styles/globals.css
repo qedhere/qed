@@ -15,10 +15,6 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 ::selection {
   @apply bg-cyan-200 dark:bg-highlight-200 text-black-900 dark:text-white;
 }
@@ -48,4 +44,9 @@ a {
   width: auto;
   height: 1em;
   vertical-align: -0.125em;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  visibility: hidden;
 }

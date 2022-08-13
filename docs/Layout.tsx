@@ -3,6 +3,10 @@ import { NextPage } from "next";
 
 import Header from "@components/Header/Header";
 import Sidebar from "@docs/Sidebar/Sidebar";
+import Tags from "@docs/Tags/Tags";
+import EditPage from "@docs/EditPage/EditPage";
+import Pagination from "@docs/Pagination/Pagination";
+
 import { useRouter } from "next/router";
 
 interface Meta {
@@ -29,13 +33,30 @@ const Layout: NextPage = (props: any) => {
     <div>
       <Header noanim />
       <div className="">
-        <div className="md:pt-[256px] pb-[256px] pt-[180px] w-full flex justify-center pl-4 pr-4 md:pl-[340px] md:pr-10">
+        <div className="md:pt-[128px] pb-[256px] pt-[100px] w-full flex justify-center pl-4 pr-4 md:pl-[340px] md:pr-10">
           <article className="max-w-[900px] prose lg:prose-lg prose-black dark:prose-invert grow">
-            <h1 className="tracking-tight" style={{ padding: 0, margin: 0 }}>
+            {
+              // @ts-ignore
+              meta ? <Tags tags={meta.tags} /> : <div></div>
+            }
+            <h1 className="tracking-tighter" style={{ padding: 0, margin: 0 }}>
               {meta ? meta.title : <div></div>}
             </h1>
+            {meta ? (
+              <div className="mt-5 text-xl text-black-400 dark:text-black-500">
+                {
+                  // @ts-ignore
+                  meta.description
+                }
+              </div>
+            ) : (
+              <div></div>
+            )}
             <hr />
             {props.children}
+            <div className="mt-[200px]"></div>
+            <Pagination />
+            <EditPage />
           </article>
         </div>
       </div>
