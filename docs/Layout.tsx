@@ -5,6 +5,7 @@ import Header from "@components/Header/Header";
 import Sidebar from "@docs/Sidebar/Sidebar";
 import Tags from "@docs/Tags/Tags";
 import EditPage from "@docs/EditPage/EditPage";
+import Pagination from "@docs/Pagination/Pagination";
 
 import { useRouter } from "next/router";
 
@@ -53,6 +54,8 @@ const Layout: NextPage = (props: any) => {
             )}
             <hr />
             {props.children}
+            <div className="mt-[200px]"></div>
+            <Pagination />
             <EditPage />
           </article>
         </div>

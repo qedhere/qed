@@ -21,6 +21,7 @@ export default function Avatar() {
             target="_blank"
             rel="noopener noreferrer"
             className="no-underline"
+            key={acc}
           >
             <img
               src={`https://github.com/${acc}.png`}

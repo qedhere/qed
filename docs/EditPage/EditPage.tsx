@@ -60,7 +60,6 @@ export default function EditPage() {
 
   return (
     <div>
-      <div className="mt-[200px]"></div>
       <div className="flex w-full items-center border-t border-black-200 dark:border-black-800">
         <div className="mt-0">
           <Avatar />
