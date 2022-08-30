@@ -28,41 +28,49 @@ const Layout: NextPage = (props: any) => {
   React.useEffect(() => {
     fetchData();
   }, []);
-
-  return (
-    <div>
-      <Header noanim />
-      <div className="">
-        <div className="md:pt-[128px] pb-[256px] pt-[100px] w-full flex justify-center pl-4 pr-4 md:pl-[340px] md:pr-10">
-          <article className="max-w-[900px] prose lg:prose-lg prose-black dark:prose-invert grow">
-            {
-              // @ts-ignore
-              meta ? <Tags tags={meta.tags} /> : <div></div>
-            }
-            <h1 className="tracking-tighter" style={{ padding: 0, margin: 0 }}>
-              {meta ? meta.title : <div></div>}
-            </h1>
-            {meta ? (
-              <div className="mt-5 text-xl text-black-400 dark:text-black-500">
-                {
-                  // @ts-ignore
-                  meta.description
-                }
-              </div>
-            ) : (
-              <div></div>
-            )}
-            <hr />
-            {props.children}
-            <div className="mt-[200px]"></div>
-            <Pagination />
-            <EditPage />
-          </article>
+  if (meta) {
+    return (
+      <div>
+        <Header noanim />
+        <div className="">
+          <div className="md:pt-[128px] pb-[256px] pt-[100px] w-full flex justify-center pl-4 pr-4 md:pl-[340px] md:pr-10">
+            <article className="max-w-[900px] prose lg:prose-lg prose-black dark:prose-invert grow">
+              {
+                // @ts-ignore
+                meta ? <Tags tags={meta.tags} /> : <div></div>
+              }
+              <h1
+                className="tracking-tighter"
+                style={{ padding: 0, margin: 0 }}
+              >
+                {meta ? meta.title : <div></div>}
+              </h1>
+              {meta ? (
+                <div className="mt-5 text-xl text-black-400 dark:text-black-500">
+                  {
+                    // @ts-ignore
+                    meta.description
+                  }
+                </div>
+              ) : (
+                <div></div>
+              )}
+              <hr />
+              {props.children}
+              <div className="mt-[200px]"></div>
+              <Pagination />
+              <EditPage />
+            </article>
+          </div>
         </div>
+        <Sidebar />
       </div>
-      <Sidebar />
-    </div>
-  );
+    );
+  } else if (meta == undefined) {
+    return <div></div>;
+  } else {
+    return <div></div>;
+  }
 };
 
 export default Layout;

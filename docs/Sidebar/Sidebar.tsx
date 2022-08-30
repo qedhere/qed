@@ -34,7 +34,7 @@ export default function Sidebar() {
   }, []);
 
   return (
-    <div className="md:fixed flex justify-center w-full h-full pt-[64px] p-4 overflow-scroll overflow-x-hidden md:top-0 md:w-[300px]">
+    <div className="md:fixed flex justify-center w-full h-full pt-[100px] p-4 overflow-scroll overflow-x-hidden md:top-0 md:w-[300px]">
       <div className="flex-col gap-5 w-full">
         <SidebarLink href="/docs" active>
           <HomeFillIcon />

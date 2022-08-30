@@ -4,23 +4,41 @@ title: "Welcome! 👋"
 description: "A short introduction about what QED is."
 tags:
   - general
-  - home
+  - faq
 contributors:
   - manuanish
 ---
 
 import Layout from "@docs/Layout";
+import Heading from "@docs/Heading/Heading";
+import Article from "@docs/Article/Article";
 
-Hello there!
+Hello! This is the home page for the QED documentation. On this page you will find
 
-$$
-\frac{1}{2} + \frac{1}{4} = \frac{3}{4}
-$$
+- FAQ
+- Guides
+- Updates
+- And much more!
 
-Some code
+Let's get started with some FAQ.
 
-```js
-return console.log("foo");
-```
+<Heading h2>What is QED?</Heading>
+
+QED is an organization that is dedicated to sharing the beauty of
+mathematics among all ages.
+
+<Heading h2>What does QED mean?</Heading>
+
+QED is an initialism of the Latin phrase _quod erat demonstrandum_, meaning
+"which was to be demonstrated". Traditionally, the abbreviation is placed at the
+end of mathematical proofs and philosophical arguments in print publications, to
+indicate that the proof or the argument is complete.
+
+■
+
+<Heading h2>Related</Heading>
+You might like these articles!
+
+<Article href="/docs/" />
 
 export default ({ children }) => <Layout>{children}</Layout>;
