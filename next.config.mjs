@@ -5,11 +5,12 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkPrism from "remark-prism";
+import remarkGfm from "remark-gfm";
 
 const NextConfig = withMDX({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [remarkFrontmatter, remarkMath, remarkPrism],
+    remarkPlugins: [remarkFrontmatter, remarkMath, remarkPrism, remarkGfm],
     rehypePlugins: [rehypeKatex],
   },
 });
