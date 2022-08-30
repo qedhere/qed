@@ -1,10 +1,52 @@
 ---
 name: "How do I help?"
+title: "How do I help?"
+description: "Getting started guide for new contributors."
 id: 0
+tags:
+  - guide
+  - contributing
 contributors:
   - manuanish
 ---
 
 import Layout from "@docs/Layout";
+import Heading from "@docs/Heading/Heading";
+import Article from "@docs/Article/Article";
+import {
+  RepoIcon,
+  IssueOpenedIcon,
+  GitPullRequestIcon,
+} from "@primer/octicons-react";
+
+Thank you for your interest in QED! Below is a quick guide on getting started as
+a new contributor.
+
+<Heading h3 icon={<RepoIcon size={24} />}>Find a project you like</Heading>
+
+To get started, you can head over to our [GitHub page](https://github.com/orgs/qedhere/repositories).
+On this page you will find and find a list of repositories that are available to
+the public. From here you can simply pick a project that you
+are interested in and dive right in!
+
+<Heading h3 icon={<IssueOpenedIcon size={24} />}>Working on issues</Heading>
+
+On each repository, there is an `issues` tab, where there are a list of todos
+available for public help. If you are new to GitHub, you might look for the label
+`good first issue`. Each issue can be linked to a [branch](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-branches)
+which can be merged back to the main branch after said changes.
+
+<Heading h3 icon={<GitPullRequestIcon size={24} />}>Submitting your changes</Heading>
+
+After you have fixed the issue, you can create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+and your changes will be submitted for review! 🎉 If you are interested in the code review
+process you can take a look at the [security documentation](/docs/security/code-reviews).
+
+---
+
+<Heading h2>Related</Heading>
+
+<Article href="/docs/contributing/code-of-conduct" />
+<Article href="/docs/contributing/getting-help" />
 
 export default ({ children }) => <Layout>{children}</Layout>;

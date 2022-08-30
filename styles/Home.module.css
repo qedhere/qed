@@ -1,7 +1,7 @@
 .Home {
   z-index: 100;
   width: 300px;
-  margin-left: calc(100% - 1050px);
+  margin-left: calc(100% - 1250px);
 }
 
 @media only screen and (max-width: 1300px) {
