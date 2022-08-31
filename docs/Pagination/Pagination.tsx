@@ -34,8 +34,6 @@ export default function Pagination() {
           // @ts-ignore
           setNextPage(currentData[parseInt(currentPageIndex) + 1]);
           // @ts-ignore
-          console.log(currentData[parseInt(currentPageIndex) + 1].name);
-          // @ts-ignore
         } else if (parseInt(currentPageIndex) == currentData.length - 1) {
           // @ts-ignore
           setPreviousPage(currentData[parseInt(currentPageIndex) - 1]);

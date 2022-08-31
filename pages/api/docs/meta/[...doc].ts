@@ -3,71 +3,66 @@ import error from "@api/error_codes.json";
 import { parseFrontmatter } from "@lib/parseFrontmatter.js";
 
 const MetaDoc = (req: NextApiRequest, res: NextApiResponse) => {
-  try {
-    if (req.query.doc!.length == 1) {
-      try {
-        const matter = JSON.stringify(
-          parseFrontmatter("/docs/" + req.query.doc![0]),
-          null,
-          2
-        );
+  if (Array(req.query.doc!).length == 1) {
+    try {
+      const matter = JSON.stringify(
+        parseFrontmatter("/docs/" + req.query.doc![0]),
+        null,
+        2
+      );
 
-        if (matter == undefined) {
-          res.send(error.ERR_INVALID_ROUTE);
-        } else {
-          res.send(matter);
-        }
-      } catch {
+      if (matter == undefined) {
         res.send(error.ERR_INVALID_ROUTE);
+      } else {
+        res.send(matter);
       }
-    } else if (req.query.doc!.length == 2) {
-      try {
-        const matter = JSON.stringify(
-          parseFrontmatter(
-            "/docs/" + req.query.doc![0] + "/" + req.query.doc![1]
-          ),
-          null,
-          2
-        );
-
-        if (matter == undefined) {
-          res.send(error.ERR_INVALID_ROUTE);
-        } else {
-          res.send(matter);
-        }
-      } catch {
-        res.send(error.ERR_INVALID_ROUTE);
-      }
-    } else if (req.query.doc!.length == 3) {
-      try {
-        const matter = JSON.stringify(
-          parseFrontmatter(
-            "/docs/" +
-              req.query.doc![0] +
-              "/" +
-              req.query.doc![1] +
-              "/" +
-              req.query.doc![2]
-          ),
-          null,
-          2
-        );
-
-        if (matter == undefined) {
-          res.send(error.ERR_INVALID_ROUTE);
-        } else {
-          res.send(matter);
-        }
-      } catch {
-        res.send(error.ERR_INVALID_ROUTE);
-      }
-    } else {
+    } catch {
       res.send(error.ERR_INVALID_ROUTE);
     }
-  } catch {
+  } else if (Array(req.query.doc!).length == 2) {
+    try {
+      const matter = JSON.stringify(
+        parseFrontmatter(
+          "/docs/" + req.query.doc![0] + "/" + req.query.doc![1]
+        ),
+        null,
+        2
+      );
+
+      if (matter == undefined) {
+        res.send(error.ERR_INVALID_ROUTE);
+      } else {
+        res.send(matter);
+      }
+    } catch {
+      res.send(error.ERR_INVALID_ROUTE);
+    }
+  } else if (Array(req.query.doc!).length == 3) {
+    try {
+      const matter = JSON.stringify(
+        parseFrontmatter(
+          "/docs/" +
+            req.query.doc![0] +
+            "/" +
+            req.query.doc![1] +
+            "/" +
+            req.query.doc![2]
+        ),
+        null,
+        2
+      );
+
+      if (matter == undefined) {
+        res.send(error.ERR_INVALID_ROUTE);
+      } else {
+        res.send(matter);
+      }
+    } catch {
+      res.send(error.ERR_INVALID_ROUTE);
+    }
+  } else {
     res.send(error.ERR_INVALID_ROUTE);
   }
-
 };
 
 export default MetaDoc;
