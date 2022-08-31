@@ -11,7 +11,6 @@ interface Props {
 
 export default function Heading(props: Props) {
   const router = useRouter();
-  console.log(props.children);
 
   if (props.h2) {
     return (
