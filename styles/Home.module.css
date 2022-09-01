@@ -1,14 +1,30 @@
 .Home {
   z-index: 100;
   width: 300px;
-  margin-left: calc(100% - 1250px);
+  margin-left: calc(100% - 1350px);
+}
+
+@media only screen and (max-width: 1700px) {
+  .Home {
+    z-index: 100;
+    width: 300px;
+    margin-left: calc(100% - 1250px);
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .Home {
+    z-index: 100;
+    width: 300px;
+    margin-left: calc(100% - 1050px);
+  }
 }
 
 @media only screen and (max-width: 1300px) {
   .Home {
     z-index: 100;
     width: 300px;
-    margin-left: calc(100% - 850px);
+    margin-left: calc(100% - 950px);
   }
 }
 
@@ -21,15 +37,6 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .Home {
-    z-index: 100;
-    width: 300px;
-    margin-left: calc(100% - 700px);
-    margin-top: 100px;
-  }
-}
-
-@media only screen and (max-width: 900px) {
   .Home {
     z-index: 100;
     width: 300px;

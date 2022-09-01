@@ -39,7 +39,7 @@ export default function Header(props: any) {
     return (
       <div className="fixed w-full z-50 select-none">
         <div
-          className={`flex justify-center flex-shrink dark:bg-[rgba(0,0,0,0.5)] bg-[rgba(255,255,255,0.5)] backdrop-blur-[6px] duration-100 border-b dark:border-[rgba(255,255,255,0.05)] border-[rgba(0,0,0,0.05)]`}
+          className={`flex justify-center flex-shrink dark:bg-[rgba(17,17,17,0.5)] bg-[rgba(255,255,255,0.5)] backdrop-blur-[6px] duration-100 border-b dark:border-[rgba(255,255,255,0.05)] border-[rgba(0,0,0,0.05)]`}
         >
           <header className="w-[1200px] h-[64px] duration-100">
             <div className="flex pl-4 items-center h-[64px] pr-4">
@@ -75,7 +75,7 @@ export default function Header(props: any) {
     return (
       <div className="fixed w-full z-50 select-none">
         <div
-          className={`flex justify-center flex-shrink dark:bg-[rgba(0,0,0,0.5)] bg-[rgba(255,255,255,0.5)] backdrop-blur-[6px] duration-100 ${border} dark:border-[rgba(255,255,255,0.05)] border-[rgba(0,0,0,0.05)]`}
+          className={`flex justify-center flex-shrink dark:bg-[rgba(17,17,17,0.5)] bg-[rgba(255,255,255,0.5)] backdrop-blur-[6px] duration-100 ${border} dark:border-[rgba(255,255,255,0.05)] border-[rgba(0,0,0,0.05)]`}
         >
           <header className="w-[1200px] h-[64px] duration-100">
             <div className="flex pl-4 items-center h-[64px] pr-4">
