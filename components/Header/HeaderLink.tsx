@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 
 export default function HeaderLink(props: any) {
   const router = useRouter();
+
   if (props.noanim) {
     if (router.pathname == props.href) {
       return (

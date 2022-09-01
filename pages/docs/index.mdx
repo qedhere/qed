@@ -1,17 +1,27 @@
----
-id: 0
-title: "Welcome! 👋"
-description: "A short introduction about what QED is."
-tags:
-  - general
-  - faq
-contributors:
-  - manuanish
----
+export const meta = {
+  title: 'Welcome! 👋',
+  description: "Home page for the QED documentation.",
+  contributors: 'manuanish',
+  link: 'index.mdx'
+}
 
 import Layout from "@docs/Layout";
 import Heading from "@docs/Heading/Heading";
-import Article from "@docs/Article/Article";
+import Chapter from "@docs/Chapter/Chapter";
+import ChapterGroup from "@docs/Chapter/ChapterGroup";
+
+import {CodeOfConductIcon, RepoLockedIcon, CommentDiscussionIcon} from "@primer/octicons-react"
+import DocsImage from "@docs/DocsImage/DocsImage"
+
+<DocsImage src="/images/cubes.webp" width="100px" height="100px" layout="responsive"/>
+
+---
+
+<ChapterGroup>
+  <Chapter icon="/images/contributing.webp" section="Contributing" title="Contributing Docs" href="/docs/contributing" width="300px" height="300px"/>
+  <Chapter icon="/images/security.webp" section="Security" title="Security Docs" href="/docs/security" width="300px" height="300px"/>
+  <Chapter icon="/images/community.webp" section="Community" title="The QED Community" href="/docs/community" width="300px" height="300px"/>
+</ChapterGroup>
 
 Hello! This is the home page for the QED documentation. On this page you will find
 
@@ -36,9 +46,4 @@ indicate that the proof or the argument is complete.
 
 ■
 
-<Heading h2>Related</Heading>
-You might like these articles!
-
-<Article href="/docs/" />
-
-export default ({ children }) => <Layout>{children}</Layout>;
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;

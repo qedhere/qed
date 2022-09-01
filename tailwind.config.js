@@ -84,7 +84,7 @@ module.exports = {
             "--tw-prose-invert-bold": theme("colors.white"),
             "--tw-prose-invert-counters": theme("colors.black[400]"),
             "--tw-prose-invert-bullets": theme("colors.black[600]"),
-            "--tw-prose-invert-hr": theme("colors.black[800]"),
+            "--tw-prose-invert-hr": theme("colors.black[700]"),
             "--tw-prose-invert-quotes": theme("colors.black[300]"),
             "--tw-prose-invert-quote-borders": theme("colors.black[700]"),
             "--tw-prose-invert-captions": theme("colors.black[400]"),

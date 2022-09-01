@@ -28,13 +28,13 @@ export default function Landing() {
       }}
     >
       <animated.div className="flex-col w-full h-full" style={backgroundProps}>
-        <div className="w-full h-[128px] bg-gradient-to-b mt-[53px] dark:from-black-900 from-white to-transparent fixed"></div>
+        <div className="w-full h-[128px] bg-gradient-to-b mt-[53px] dark:from-black-800 from-white to-transparent fixed"></div>
         {currentTheme == "dark" ? (
           <div className="backgroundDark w-full h-full"></div>
         ) : (
           <div className="backgroundLight w-full h-full"></div>
         )}
-        <div className="w-full h-[128px] bg-gradient-to-t mt-[53px] dark:from-black-900 from-white to-transparent fixed bottom-0"></div>
+        <div className="w-full h-[128px] bg-gradient-to-t mt-[53px] dark:from-black-800 from-white to-transparent fixed bottom-0"></div>
       </animated.div>
     </ParallaxLayer>
   );

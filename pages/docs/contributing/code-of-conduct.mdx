@@ -10,6 +10,14 @@ contributors:
   - manuanish
 ---
 
+export const meta = {
+  title: 'Code of Conduct',
+  description: "QED's code of conduct.",
+  crumbs: ['contributing', 'code-of-conduct'],
+  contributors: 'manuanish',
+  link: 'contributing/code-of-conduct.mdx'
+}
+
 import Layout from "@docs/Layout";
 import Heading from "@docs/Heading/Heading";
 
@@ -144,4 +152,4 @@ For answers to common questions about this code of conduct, see the FAQ at
 [faq]: https://www.contributor-covenant.org/faq
 [translations]: https://www.contributor-covenant.org/translations
 
-export default ({ children }) => <Layout>{children}</Layout>;
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
