@@ -1,5 +1,7 @@
 import * as React from "react";
 import { NextPage } from "next";
+import Head from 'next/head'
+
 
 import Header from "@components/Header/Header";
 import EditPage from "@docs/EditPage/EditPage";
@@ -17,6 +19,9 @@ const Layout: NextPage = (props: any) => {
   if (meta) {
     return (
       <div>
+        <Head>
+          <title>{'QED | ' + meta.title}</title>
+        </Head>
         <Header noanim />
         <div className="">
           <div className="md:pt-[128px] pb-[256px] pt-[100px] w-full flex justify-center pl-4 pr-4">

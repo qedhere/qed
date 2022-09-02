@@ -1,0 +1,87 @@
+export const meta = {
+  title: 'Writing Good Documentation',
+  description: "Guide for writing docs.",
+  crumbs: ['contributing', 'writing-docs'],
+  contributors: 'manuanish',
+  link: 'contributing/writing-docs.mdx'
+}
+
+import Layout from "@docs/Layout";
+import Heading from "@docs/Heading/Heading";
+
+
+<Heading h2>Documentation Format</Heading>
+
+The QED documentation is writting in MarkdownX (`.mdx`) which is an extension of
+standard markdown. An example markdown file may look like the following:
+
+```md
+import { Button } from "@docs/Button"
+
+## Hello World!
+This is some **markdown** and an inline React Component <Button/>
+```
+
+<Heading h3>Why MDX?</Heading>
+
+MDX allows us to import re-usable react components into our documentation making
+without removing the functionality of markdown.
+
+<Heading h3>Features</Heading>
+
+#### GFM (GitHub Flavored Markdown)
+The documentation supports GitHub Flavored Markdown; here is a quick demo:
+
+
+ | Syntax      | Description |
+ | ----------- | ----------- |
+ | Header      | Title       |
+ | Paragraph   | Text        |
+
+#### Syntax Highlighting
+The documentation also highlights code blocks (as you can see above)
+
+#### LaTeX
+We can also render inline, and block math in the documentation. For example
+
+```tex
+$\frac{1}{2}$
+```
+
+gives us $\frac{1}{2}$. Block math can be done as shown below:
+
+```tex
+$$
+\zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s}
+$$
+```
+
+$$
+\zeta(s) = \sum_{n=1}^\infty \frac{1}{n^s}
+$$
+
+<Heading h3>Helpful resources</Heading>
+- [Markdown Guide](https://www.markdownguide.org/)
+- [MDX Webpage](https://mdxjs.com/)
+- [GFM Docs](https://github.github.com/gfm/)
+- [KaTeX supported functions](https://katex.org/docs/supported.html)
+
+
+
+<Heading h2>Tips for writing documentation</Heading>
+
+- Split you content into sections which are short and easy to read.
+- If you are referring to project outside of the organization, you should cite your
+reference with either:
+   - a footnote
+   - or a inline link
+- Always highlight your code blocks! It makes it that much easier to read your code.
+- Make sure the article is as concise as possible. Try to remove as much as content
+as you can while keeping it's readability.
+
+<Heading h2>Requesting an Article</Heading>
+
+All of our repositories have templates for submitting issues. Make sure to read each
+requirement carefully before suggesting an issue.
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;

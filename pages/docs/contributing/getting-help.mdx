@@ -1,15 +1,38 @@
----
-name: "Getting Help"
-title: "Getting Help"
-id: 3
-tags:
-  - help
-  - info
-  - contributing
-contributors:
-  - manuanish
----
+export const meta = {
+  title: 'Getting Help',
+  description: "Short guide on how to get help.",
+  crumbs: ['contributing', 'getting-help'],
+  contributors: 'manuanish',
+  link: 'contributing/getting-help.mdx'
+}
 
 import Layout from "@docs/Layout";
+import Heading from "@docs/Heading/Heading";
 
-export default ({ children }) => <Layout>{children}</Layout>;
+Are you having a problem? Found a bug or issue? This is a short article regarding
+how to report, and debug issues.
+
+<Heading h3>Reporting Issues</Heading>
+
+If you find something is not working as expected we encourage you to create an issue
+as soon as possible. You can also head over to the organization-level [discussions](https://github.com/orgs/qedhere/discussions)
+and start a thread in the Q&A section.
+
+#### Duplicate Issues
+Before you start a new issue, the first thing you should do is to check if someone else
+has the same issue as you.
+
+> 1. Search open **and closed** issues to see if you find a duplicate.
+> 2. Search discussions to see if you can find a duplicate.
+
+
+#### 🚨 Security Vulnerabilities
+If you believe you have found a serious security threat in our applictions,
+read [the guide](/docs/security/index) on reporting security vulnerabilities securely.
+
+<Heading h3>Asking for help</Heading>
+
+All of our repositories have templates for submitting issues. Make sure to read each
+requirement carefully before suggesting an issue.
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
