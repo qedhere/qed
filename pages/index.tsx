@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import * as React from "react";
+import Head from "next/head";
 
 import Header from "@components/Header/Header";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
@@ -43,6 +44,9 @@ const Home: NextPage = () => {
 
   return (
     <div>
+      <Head>
+        <title>{'QED'}</title>
+      </Head>
       <Header />
       <Parallax pages={1} style={{ top: "0", left: "0" }} id="body">
         <Landing />
