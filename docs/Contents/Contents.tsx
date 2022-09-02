@@ -4,7 +4,7 @@ import { LinkExternalIcon, PlusIcon } from "@primer/octicons-react";
 
 export default function Contents(props: any) {
   return (
-    <div className="w-full flex gap-5">
+    <div className="w-full flex flex-wrap gap-5">
       {props.title.map((item: any) => {
         return (
           <Link
