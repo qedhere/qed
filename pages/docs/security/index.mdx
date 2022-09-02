@@ -1,10 +1,49 @@
----
-name: "Reporting Vulnerabilities"
-id: 0
-contributors:
-  - manuanish
----
+export const meta = {
+  title: 'Security 🔒',
+  description: "QED's Security Policy.",
+  crumbs: ['security'],
+  contributors: 'manuanish',
+  link: 'security/index.mdx'
+}
 
 import Layout from "@docs/Layout";
+import Heading from "@docs/Heading/Heading";
+import {
+  RepoIcon,
+  IssueOpenedIcon,
+  GitPullRequestIcon,
+} from "@primer/octicons-react";
+import DocsImage from "@docs/DocsImage/DocsImage"
+import Contents from "@docs/Contents/Contents";
 
-export default ({ children }) => <Layout>{children}</Layout>;
+
+<DocsImage src="/images/security.webp" width="100px" height="100px" layout="responsive" priority/>
+
+---
+<Heading h2> Articles </Heading>
+
+<Contents empty/>
+
+---
+
+<Heading h2> Reporting Security Issues </Heading>
+
+If you believe you have found a security vulnerability in QED, we encourage you to let us know right away.
+We will investigate all legitimate reports and do our best to quickly fix the problem.
+
+Email `qedhere@outlook.com` to disclose any security vulnerabilities.
+
+<Heading h2> Branch Protection </Heading>
+
+All of our repositories have the `main` branch being protected. This means that
+you cannot commit directly to `main` (this applies to code-owners/admin as well). To create a commit you have
+to start a pull request and propose your changes.
+
+From here your code will be reviewed by a code reviewer and once all checks pass,
+it will be merged with the main branch.
+
+<Heading h3> Helpful Resources </Heading>
+
+ - [Github Docs](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/defining-the-mergeability-of-pull-requests/about-protected-branches)
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
