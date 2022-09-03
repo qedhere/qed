@@ -17,7 +17,7 @@ export default function Landing() {
 
   const pushContact = () => {
     router.push("/contact");
-  }
+  };
   return (
     <ParallaxLayer
       offset={0}
