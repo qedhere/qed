@@ -1,7 +1,6 @@
 import * as React from "react";
 import { NextPage } from "next";
-import Head from 'next/head'
-
+import Head from "next/head";
 
 import Header from "@components/Header/Header";
 import EditPage from "@docs/EditPage/EditPage";
@@ -20,7 +19,7 @@ const Layout: NextPage = (props: any) => {
     return (
       <div>
         <Head>
-          <title>{'QED | ' + meta.title}</title>
+          <title>{"QED | " + meta.title}</title>
         </Head>
         <Header noanim />
         <div className="">
