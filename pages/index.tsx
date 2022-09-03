@@ -45,7 +45,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <Head>
-        <title>{'QED'}</title>
+        <title>{"QED"}</title>
       </Head>
       <Header />
       <Parallax pages={1} style={{ top: "0", left: "0" }} id="body">

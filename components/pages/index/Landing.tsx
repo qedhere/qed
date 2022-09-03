@@ -15,6 +15,9 @@ export default function Landing() {
     router.push("/docs");
   };
 
+  const pushContact = () => {
+    router.push("/contact");
+  };
   return (
     <ParallaxLayer
       offset={0}
@@ -39,7 +42,7 @@ export default function Landing() {
           <Button delay={400} onClick={learnMore}>
             Learn More
           </Button>
-          <Button type="secondary" delay={500}>
+          <Button type="secondary" delay={500} onClick={pushContact}>
             Contact us
           </Button>
         </div>

@@ -49,7 +49,7 @@ export default function Header(props: any) {
               <div className="grow flex justify-center items-center gap-8 invisible xs:visible">
                 <HeaderLink text="Home" href="/" noanim />
                 <HeaderLink text="Docs" href="/docs" noanim />
-                <HeaderLink text="Contact" href="#" noanim />
+                <HeaderLink text="Contact" href="/contact" noanim />
               </div>
               <div className="flex gap-5">
                 {currentTheme == "light" ? (
@@ -88,7 +88,7 @@ export default function Header(props: any) {
               <div className="grow flex justify-center items-center gap-8 invisible xs:visible">
                 <HeaderLink style={link1Props} text="Home" href="/" />
                 <HeaderLink style={link2Props} text="Docs" href="/docs" />
-                <HeaderLink style={link3Props} text="Contact" href="#" />
+                <HeaderLink style={link3Props} text="Contact" href="/contact" />
               </div>
               <div className="flex gap-5">
                 {currentTheme == "light" ? (

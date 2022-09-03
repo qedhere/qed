@@ -3,7 +3,7 @@ import Link from "next/link";
 import { LinkExternalIcon, PlusIcon } from "@primer/octicons-react";
 
 export default function Contents(props: any) {
-  console.log(props)
+  console.log(props);
   if (props.empty) {
     return (
       <button className="border-dashed flex p-2 pl-4 pr-4 border-2 border-black-200 dark:border-black-700 text-black-400 hover:bg-black-200 hover:text-black-500 dark:hover:bg-black-700 dark:hover:text-black-300 rounded-md items-center duration-200">
@@ -18,8 +18,7 @@ export default function Contents(props: any) {
           </div>
         </a>
       </button>
-    )
-
+    );
   } else {
     return (
       <div className="w-full flex flex-wrap gap-5">
@@ -61,5 +60,4 @@ export default function Contents(props: any) {
       </div>
     );
   }
-
 }
