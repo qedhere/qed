@@ -1,10 +1,53 @@
----
-name: "Our Community"
-id: 0
-contributors:
-  - manuanish
----
+export const meta = {
+  title: 'Community',
+  description: "The QED Community.",
+  crumbs: ['community'],
+  contributors: 'manuanish',
+  link: 'community/index.mdx'
+}
 
 import Layout from "@docs/Layout";
+import Heading from "@docs/Heading/Heading";
+import {
+  LinkExternalIcon
+} from "@primer/octicons-react";
+import DocsImage from "@docs/DocsImage/DocsImage"
+import Contents from "@docs/Contents/Contents";
 
-export default ({ children }) => <Layout>{children}</Layout>;
+
+<DocsImage src="/images/community.webp" width="100px" height="100px" layout="responsive" priority/>
+
+---
+<Heading h2> Articles </Heading>
+
+<Contents empty/>
+
+---
+
+<Heading h2> Community Guidlines </Heading>
+
+The QED Community Guidlines is an extension of the Code of Conduct which is included
+in all repositories as `CODE_OF_CONDUCT.md`. You can read it [here](/docs/contributing/code-of-coduct).
+Moreover, the discussions on GitHub follow the GitHub community guidlines which can
+be found [here](https://docs.github.com/en/site-policy/github-terms/github-community-guidelines).
+
+<Heading h2 icon={<LinkExternalIcon size={24}/>}> Quick Links </Heading>
+
+Here are a list of links for quick reference.
+
+<Heading h3> GitHub Discussions </Heading>
+
+[📣 Announcements](https://github.com/orgs/qedhere/discussions/categories/announcements)
+
+[💬 General](https://github.com/orgs/qedhere/discussions/categories/general)
+
+[💡 Ideas](https://github.com/orgs/qedhere/discussions/categories/ideas)
+
+[🗳 Polls](https://github.com/orgs/qedhere/discussions/categories/polls)
+
+[🙏 Q&A](https://github.com/orgs/qedhere/discussions/categories/q-a)
+
+[🙌 Show an tell](https://github.com/orgs/qedhere/discussions/categories/show-and-tell)
+
+
+export default ({ children }) => <Layout meta={meta}>{children}</Layout>;
