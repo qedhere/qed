@@ -7,6 +7,7 @@ import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 
 import Landing from "@components/pages/index/Landing";
 import GridBackground from "@components/pages/index/GridBackground";
+import Pages from "@components/pages/index/Pages";
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -23,11 +24,6 @@ const Home: NextPage = () => {
     if (typeof theme != undefined) {
       setCurrentTheme(theme);
     }
-    fetch("/api/docs?route=/docs")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-      });
   }, [theme]);
   const boxAnimProps = useSpring({
     to: {
@@ -48,7 +44,7 @@ const Home: NextPage = () => {
         <title>{"QED"}</title>
       </Head>
       <Header />
-      <Parallax pages={1} style={{ top: "0", left: "0" }} id="body">
+      <Parallax pages={1.2} style={{ top: "0", left: "0" }} id="body">
         <Landing />
         <GridBackground />
         <animated.div style={boxAnimProps}>
@@ -81,6 +77,7 @@ const Home: NextPage = () => {
               <Box />
             </Canvas>
           </ParallaxLayer>
+          <Pages />
         </animated.div>
       </Parallax>
     </div>

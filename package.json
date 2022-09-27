@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@geist-ui/core": "^2.3.8",
     "@mdx-js/loader": "^2.1.2",
     "@mdx-js/mdx": "^2.1.2",
     "@next/mdx": "^12.2.4",

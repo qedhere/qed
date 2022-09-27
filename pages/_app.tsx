@@ -1,3 +1,5 @@
+import * as React from "react";
+
 import "inter-ui/inter.css";
 import "katex/dist/katex.min.css";
 import "@docs/prism/themes/default.css";
@@ -6,8 +8,16 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "next-themes";
 import NextNProgress from "nextjs-progressbar";
+import { GeistProvider } from "@geist-ui/core";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [theme, setTheme] = React.useState<string>("");
+
+  React.useEffect(() => {
+    // @ts-ignore
+    setTheme(localStorage.getItem("theme"));
+  }, []);
+
   return (
     <ThemeProvider
       attribute="class"
@@ -23,7 +33,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         showOnShallow={true}
         options={{ showSpinner: false }}
       />
-      <Component {...pageProps} />
+      <GeistProvider themeType={theme}>
+        <Component {...pageProps} />
+      </GeistProvider>
     </ThemeProvider>
   );
 }

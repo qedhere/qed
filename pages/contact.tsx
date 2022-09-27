@@ -92,7 +92,7 @@ export default function Contact() {
                 </button>
               </a>
               <a
-                href="https://github.com/qedhere/orgs/discussions"
+                href="https://github.com/orgs/qedhere/discussions"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ textDecoration: "none", color: "inherit" }}

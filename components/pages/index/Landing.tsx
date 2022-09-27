@@ -39,10 +39,10 @@ export default function Landing() {
           </span>
         </animated.div>
         <div className="mt-10 md:mt-20 flex gap-5 justify-center xs:justify-start flex-wrap w-full">
-          <Button delay={400} onClick={learnMore}>
+          <Button type="gradient" delay={400} onClick={learnMore}>
             Learn More
           </Button>
-          <Button type="secondary" delay={500} onClick={pushContact}>
+          <Button type="" delay={500} onClick={pushContact}>
             Contact us
           </Button>
         </div>
