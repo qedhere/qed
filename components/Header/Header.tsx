@@ -6,7 +6,7 @@ import { MoonIcon, SunIcon } from "@primer/octicons-react";
 
 import { useTheme } from "next-themes";
 
-export default function Header() {
+export default function Header(props: any) {
   const { theme, setTheme } = useTheme();
   const [border, setBorder] = React.useState<any | string>("");
   const [currentTheme, setCurrentTheme] = React.useState<any | null>(null);
