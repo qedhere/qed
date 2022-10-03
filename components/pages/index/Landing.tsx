@@ -30,7 +30,7 @@ export default function Landing() {
     >
       <div className="xs:pl-8 pl-5 pr-5 xs:pr-8 md:pl-15 xl:pl-20 mt-[150px] xs:mt-[200px] md:mt-[200px] lg:mt-[200px] xl:mt-[250px] max-w-[800px]">
         <animated.div
-          className="sm:text-5xl md:text-6xl lg:text-7xl xs:text-5xl text-4xl xs:font-black font-bold tracking-tight select-none pl-5s pr-6 w-full"
+          className="sm:text-5xl md:text-6xl lg:text-7xl xs:text-5xl text-4xl xs:font-black font-bold tracking-tight select-none pr-6 w-full"
           style={mainTitleProps}
         >
           For those who love{" "}
@@ -39,10 +39,10 @@ export default function Landing() {
           </span>
         </animated.div>
         <div className="mt-10 md:mt-20 flex gap-5 justify-center xs:justify-start flex-wrap w-full">
-          <Button delay={400} onClick={learnMore}>
+          <Button type="gradient" delay={400} onClick={learnMore}>
             Learn More
           </Button>
-          <Button type="secondary" delay={500} onClick={pushContact}>
+          <Button type="" delay={500} onClick={pushContact}>
             Contact us
           </Button>
         </div>
