@@ -36,7 +36,7 @@ export default function Header(props: any) {
               <div className="text-2xl font-black tracking-wide flex items-center gap-2">
                 QED
               </div>
-              <div className="grow flex justify-center items-center gap-8 invisible xs:visible">
+              <div className="grow flex justify-center items-center gap-8 invisible w-[0px] xs:visible">
                 <HeaderLink text="Home" href="/" noanim />
                 <HeaderLink text="Docs" href="/docs" noanim />
                 <HeaderLink text="Contact" href="/contact" noanim />
