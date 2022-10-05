@@ -17,8 +17,6 @@ import { useTheme } from "next-themes";
 
 import styles from "@styles/Home.module.css";
 
-import { app } from "@firebase/firebase";
-
 const Home: NextPage = () => {
   const { theme } = useTheme();
   const [currentTheme, setCurrentTheme] = React.useState<any | null>(null);

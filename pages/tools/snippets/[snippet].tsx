@@ -138,7 +138,7 @@ export default function Snippet() {
 
     subscribeData();
   // @ts-ignore
-  }, [router, snippetStats.views]);
+  }, [router]);
 
   const likeSnippet = async () => {
     if (hasLiked == false) {
