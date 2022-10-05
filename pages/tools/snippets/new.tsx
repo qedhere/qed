@@ -49,14 +49,17 @@ export default function NewSnippet() {
       timestamp: Date.now(),
       title: snippetTitle,
       content: source,
-      views: 0,
-      likes: 0,
       createdBy: user!.uid,
       displayName: user!.displayName,
       photoURL: user!.photoURL,
     });
 
     await setDoc(doc(db, "snippets", user!.uid, "snippets", snippetUID), {});
+
+    await setDoc(doc(db, "snippet_stats", snippetUID), {
+      views: 0,
+      likes: 0,
+    });
 
     setButtonText("Share!");
     setButtonDisabled(false);

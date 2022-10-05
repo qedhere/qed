@@ -2,7 +2,13 @@ import * as React from "react";
 import Header from "@components/Header/Header";
 
 import "@firebase/firebase";
-import { getFirestore, getDoc, doc } from "firebase/firestore";
+import {
+  getFirestore,
+  getDoc,
+  updateDoc,
+  doc,
+  onSnapshot,
+} from "firebase/firestore";
 import { useRouter } from "next/router";
 const db = getFirestore();
 
@@ -26,6 +32,7 @@ var getRelativeTime = (d1, d2 = new Date()) => {
   var elapsed = d1 - d2;
 
   // "Math.abs" accounts for both "past" & "future" scenarios
+  // @ts-ignore
   for (var u in units)
     // @ts-ignore
     if (Math.abs(elapsed) > units[u] || u == "second")
@@ -36,8 +43,9 @@ var getRelativeTime = (d1, d2 = new Date()) => {
 export default function Snippet() {
   const router = useRouter();
   const [snippetData, setSnippetData] = React.useState();
+  const [snippetStats, setSnippetStats] = React.useState();
   const [isLoading, setIsLoading] = React.useState(true);
-  const [hasLiked, setHasLiked] = React.useState(true);
+  const [hasLiked, setHasLiked] = React.useState(false);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -54,12 +62,104 @@ export default function Snippet() {
             // @ts-ignore
             setSnippetData(docSnap.data());
           }
+
+          // @ts-ignore
+          const docStatsRef = doc(db, "snippet_stats", router.query.snippet);
+          const docStatsSnap = await getDoc(docStatsRef);
+
+          if (docStatsSnap.data() == undefined) {
+            router.push("/404");
+          } else {
+            // @ts-ignore
+            setSnippetStats(docStatsSnap.data());
+          }
         }
       }
     };
 
     fetchData();
-  });
+
+    const checkLocalStorage = async () => {
+      if (router.query != undefined) {
+        if (JSON.stringify(router.query) != "{}") {
+          if (
+            localStorage.getItem("has_viewed_" + router.query.snippet) ==
+            undefined
+          ) {
+            if (
+              localStorage.getItem("has_viewed_" + router.query.snippet) !=
+              "true"
+            ) {
+              // @ts-ignore
+              await updateDoc(doc(db, "snippet_stats", router.query.snippet), {
+                // @ts-ignore
+                views: parseInt(parseInt(snippetStats.views) + 1),
+              });
+
+              localStorage.setItem(
+                "has_viewed_" + router.query.snippet,
+                "true"
+              );
+            }
+          }
+
+          if (
+            localStorage.getItem("has_viewed_" + router.query.snippet) !=
+            undefined
+          ) {
+            if (
+              localStorage.getItem("has_liked_" + router.query.snippet) ==
+              "true"
+            ) {
+              setHasLiked(true);
+            }
+          }
+        }
+      }
+    };
+
+    checkLocalStorage();
+
+    const subscribeData = async () => {
+      if (router.query != undefined) {
+        if (JSON.stringify(router.query) != "{}") {
+          // @ts-ignore
+          const unsub = onSnapshot(
+            // @ts-ignore
+            doc(db, "snippet_stats", router.query.snippet),
+            (doc) => {
+              // @ts-ignore
+              setSnippetStats(doc.data());
+            }
+          );
+        }
+      }
+    };
+
+    subscribeData();
+  // @ts-ignore
+  }, [router, snippetStats.views]);
+
+  const likeSnippet = async () => {
+    if (hasLiked == false) {
+      setHasLiked(true);
+      localStorage.setItem("has_liked_" + router.query.snippet, "true");
+      // @ts-ignore
+      await updateDoc(doc(db, "snippet_stats", router.query.snippet), {
+        // @ts-ignore
+        likes: parseInt(parseInt(snippetStats.likes) + 1),
+      });
+    } else {
+      setHasLiked(false);
+      localStorage.setItem("has_liked_" + router.query.snippet, "false");
+      // @ts-ignore
+      await updateDoc(doc(db, "snippet_stats", router.query.snippet), {
+        // @ts-ignore
+        likes: parseInt(parseInt(snippetStats.likes) - 1),
+      });
+    }
+  };
+
   if (isLoading) {
     return (
       <div>
@@ -108,24 +208,33 @@ export default function Snippet() {
               <div className="flex items-center gap-10 text-sm">
                 {hasLiked ? (
                   <div className="flex items-center gap-2 group text-pink-500">
-                    <button className="hover:bg-[rgba(236,72,153,0.1)] rounded-full w-[32px] h-[32px] flex items-center justify-center duration-200">
+                    <button
+                      className="hover:bg-[rgba(236,72,153,0.1)] rounded-full w-[32px] h-[32px] flex items-center justify-center duration-200"
+                      onClick={likeSnippet}
+                    >
                       <HeartFillIcon size={18} />
                     </button>{" "}
-                    0
+                    {/* @ts-ignore */}
+                    {snippetStats.likes}
                   </div>
                 ) : (
                   <div className="flex items-center gap-2 text-gray-500 group hover:text-pink-400 duration-200">
-                    <button className="hover:bg-[rgba(236,72,153,0.1)] rounded-full w-[32px] h-[32px] flex items-center justify-center duration-200">
+                    <button
+                      className="hover:bg-[rgba(236,72,153,0.1)] rounded-full w-[32px] h-[32px] flex items-center justify-center duration-200"
+                      onClick={likeSnippet}
+                    >
                       <HeartIcon size={18} />
                     </button>{" "}
-                    0
+                    {/* @ts-ignore */}
+                    {snippetStats.likes}
                   </div>
                 )}
                 <div className="flex items-center gap-2 text-gray-500">
                   <div className="flex justify-center items-center w-[32px] h-[32px]">
                     <EyeIcon size={18} />
                   </div>{" "}
-                  0
+                  {/* @ts-ignore */}
+                  {snippetStats.views}
                 </div>
               </div>
             </div>
