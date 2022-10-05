@@ -19,6 +19,6 @@ export default NextConfig({
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
   reactStrictMode: true,
   images: {
-    domains: ["github.com"],
+    domains: ["github.com", "lh3.googleusercontent.com"],
   },
 });
