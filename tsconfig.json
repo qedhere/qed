@@ -21,7 +21,8 @@
       "@docs/*": ["docs/*"],
       "@pages/*": ["pages/*"],
       "@lib/*": ["lib/*"],
-      "@api/*": ["api/*"]
+      "@api/*": ["api/*"],
+      "@firebase/*": ["firebase/*"]
     }
   },
   "ts-node": {

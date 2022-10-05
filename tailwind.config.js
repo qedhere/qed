@@ -90,7 +90,7 @@ module.exports = {
             "--tw-prose-invert-captions": theme("colors.black[400]"),
             "--tw-prose-invert-code": theme("colors.cyan[200]"),
             "--tw-prose-invert-pre-code": theme("colors.black[300]"),
-            "--tw-prose-invert-pre-bg": theme("colors.black[800]"),
+            "--tw-prose-invert-pre-bg": theme("colors.neutral[900]"),
             "--tw-prose-invert-th-borders": theme("colors.black[600]"),
             "--tw-prose-invert-td-borders": theme("colors.black[700]"),
           },

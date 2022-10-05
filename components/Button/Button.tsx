@@ -41,7 +41,7 @@ export default function Button(props: any) {
         onClick={props.onClick}
         className={`grow max-w-[400px] xs:max-w-[200px] xs:w-fit w-full duration-200 text-white text-white p-[1px] bg-gradient-to-tr from-success-400 to-pink-500 hover:border-black-800 dark:hover:border-white dark:hover:text-white w-fit rounded-md shadow-[0_0px_60px_-15px_rgba(118,89,241)] ${props.style}`}
       >
-        <div className="w-full h-full dark:bg-black-800 bg-white text-black-900 flex items-center text-black-900 dark:text-white justify-center rounded-md hover:bg-transparent dark:hover:bg-transparent hover:text-white dark:hover:text-white duration-200">
+        <div className="w-full h-full dark:bg-black-800 bg-white text-black-900 flex items-center text-black-900 dark:text-white justify-center rounded-md hover:bg-transparent dark:hover:bg-transparent hover:text-white dark:hover:text-white duration-200 pl-10 pr-10 pt-3 pb-3">
           {props.children}
         </div>
       </animated.button>
