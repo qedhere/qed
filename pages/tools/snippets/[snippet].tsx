@@ -32,7 +32,6 @@ var getRelativeTime = (d1, d2 = new Date()) => {
   var elapsed = d1 - d2;
 
   // "Math.abs" accounts for both "past" & "future" scenarios
-  // @ts-ignore
   for (var u in units)
     // @ts-ignore
     if (Math.abs(elapsed) > units[u] || u == "second")
@@ -86,45 +85,38 @@ export default function Snippet() {
     fetchData();
 
     const checkLocalStorage = async () => {
+      if (router.query != undefined) {
+        if (JSON.stringify(router.query) != "{}") {
+          // @ts-ignore
+          const docRef = doc(db, "snippet_stats", router.query.snippet);
+          const docSnap = await getDoc(docRef);
+          const docSnapData = docSnap.data();
 
-        if (router.query != undefined) {
-          if (JSON.stringify(router.query) != "{}") {
+          console.log(docSnapData);
+
+          if (localStorage.getItem("has_viewed_" + router.query.snippet)) {
+          } else {
             // @ts-ignore
-            const docRef = doc(db, "snippet_stats", router.query.snippet);
-            const docSnap = await getDoc(docRef);
-            const docSnapData = docSnap.data()
-
-            console.log(docSnapData)
-
-            if (localStorage.getItem("has_viewed_" + router.query.snippet)) {
-
-            } else {
+            await updateDoc(doc(db, "snippet_stats", router.query.snippet), {
               // @ts-ignore
-              await updateDoc(doc(db, "snippet_stats", router.query.snippet), {
-                // @ts-ignore
-                views: parseInt(parseInt(docSnapData.views) + 1),
-              });
+              views: parseInt(parseInt(docSnapData.views) + 1),
+            });
 
-              localStorage.setItem(
-                "has_viewed_" + router.query.snippet,
-                "true"
-              );
-            }
+            localStorage.setItem("has_viewed_" + router.query.snippet, "true");
+          }
 
+          if (
+            localStorage.getItem("has_liked_" + router.query.snippet) != null
+          ) {
             if (
-              localStorage.getItem("has_liked_" + router.query.snippet) !=
-              null
+              localStorage.getItem("has_liked_" + router.query.snippet) ==
+              "true"
             ) {
-              if (
-                localStorage.getItem("has_liked_" + router.query.snippet) ==
-                "true"
-              ) {
-                setHasLiked(true);
-              }
+              setHasLiked(true);
             }
           }
         }
-
+      }
     };
 
     checkLocalStorage();
@@ -146,7 +138,7 @@ export default function Snippet() {
     };
 
     subscribeData();
-  // @ts-ignore
+    // @ts-ignore
   }, [router]);
 
   const likeSnippet = async () => {
@@ -202,8 +194,8 @@ export default function Snippet() {
                 remarkPlugins={[remarkGfm, remarkMath]}
                 rehypePlugins={[rehypeKatex]}
               >
-              {/* @ts-ignore */}
-              {snippetData.content}
+                {/* @ts-ignore */}
+                {snippetData.content}
               </ReactMarkdown>
             </div>
             <div className="w-full mt-8 mb-8"></div>

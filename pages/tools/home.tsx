@@ -9,7 +9,14 @@ import "@firebase/firebase";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-import { getFirestore, getDoc, setDoc, doc, getDocs, collection } from "firebase/firestore";
+import {
+  getFirestore,
+  getDoc,
+  setDoc,
+  doc,
+  getDocs,
+  collection,
+} from "firebase/firestore";
 
 const db = getFirestore();
 const auth = getAuth();
@@ -33,7 +40,6 @@ var getRelativeTime = (d1, d2 = new Date()) => {
   var elapsed = d1 - d2;
 
   // "Math.abs" accounts for both "past" & "future" scenarios
-  // @ts-ignore
   for (var u in units)
     // @ts-ignore
     if (Math.abs(elapsed) > units[u] || u == "second")
@@ -62,23 +68,27 @@ export default function ToolsHome() {
             });
           }
 
-          const querySnapshot = await getDocs(collection(db, "snippets", user.uid, "snippets"));
+          const querySnapshot = await getDocs(
+            collection(db, "snippets", user.uid, "snippets")
+          );
           if (querySnapshot.size != 0) {
-            setSnippets([])
-              querySnapshot.forEach(async (snapDoc) => {
-                const pubSnipRef = doc(db, "public_snippets", snapDoc.id );
-                const snipStatsRef = doc(db, "snippet_stats", snapDoc.id );
-                const pubSnipRefSnap = await getDoc(pubSnipRef);
-                const snipStatsSnap = await getDoc(snipStatsRef);
-                const snipObj = {id: snapDoc.id, data: pubSnipRefSnap.data(), stats: snipStatsSnap.data()}
-                // @ts-ignore
-                setSnippets(oldArray => [snipObj, ...oldArray])
-              })
-
+            setSnippets([]);
+            querySnapshot.forEach(async (snapDoc) => {
+              const pubSnipRef = doc(db, "public_snippets", snapDoc.id);
+              const snipStatsRef = doc(db, "snippet_stats", snapDoc.id);
+              const pubSnipRefSnap = await getDoc(pubSnipRef);
+              const snipStatsSnap = await getDoc(snipStatsRef);
+              const snipObj = {
+                id: snapDoc.id,
+                data: pubSnipRefSnap.data(),
+                stats: snipStatsSnap.data(),
+              };
+              // @ts-ignore
+              setSnippets((oldArray) => [snipObj, ...oldArray]);
+            });
           } else {
-            setSnippets(undefined)
+            setSnippets(undefined);
           }
-
         }
       }
     };
@@ -105,23 +115,28 @@ export default function ToolsHome() {
               >
                 <PlusIcon size={24} />
               </button>
-              { snippets.map((snip: any) => {
+              {snippets.map((snip: any) => {
                 return (
                   <button
                     className="duration-200 flex flex-col justify-start align-start p-4 rounded-xl bg-neutral-800 max-w-[300px] hover:bg-black-700"
                     onClick={() => router.push("/tools/snippets/" + snip.id)}
                     key={snip.id}
                   >
-                    <div className="text-xl tracking-tighter font-semibold">{snip.data.title}</div>
+                    <div className="text-xl tracking-tighter font-semibold">
+                      {snip.data.title}
+                    </div>
                     <div className="grow"></div>
                     <div className="text-neutral-500 flex items-center gap-5 text-sm">
-                    <div className="flex items-center gap-2">{snip.stats.views} <EyeIcon/> </div>
-                    <div className="flex items-center gap-2">{snip.stats.likes} <HeartFillIcon/> </div>
+                      <div className="flex items-center gap-2">
+                        {snip.stats.views} <EyeIcon />{" "}
+                      </div>
+                      <div className="flex items-center gap-2">
+                        {snip.stats.likes} <HeartFillIcon />{" "}
+                      </div>
                     </div>
                   </button>
-                )
+                );
               })}
-
             </div>
           ) : (
             <div className="mt-5">
