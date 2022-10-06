@@ -40,6 +40,12 @@ var getRelativeTime = (d1, d2 = new Date()) => {
       return rtf.format(Math.round(elapsed / units[u]), u);
 };
 
+import ReactMarkdown from "react-markdown";
+
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+import remarkGfm from "remark-gfm";
+
 export default function Snippet() {
   const router = useRouter();
   const [snippetData, setSnippetData] = React.useState();
@@ -80,20 +86,23 @@ export default function Snippet() {
     fetchData();
 
     const checkLocalStorage = async () => {
-      if (router.query != undefined) {
-        if (JSON.stringify(router.query) != "{}") {
-          if (
-            localStorage.getItem("has_viewed_" + router.query.snippet) ==
-            undefined
-          ) {
-            if (
-              localStorage.getItem("has_viewed_" + router.query.snippet) !=
-              "true"
-            ) {
+
+        if (router.query != undefined) {
+          if (JSON.stringify(router.query) != "{}") {
+            // @ts-ignore
+            const docRef = doc(db, "snippet_stats", router.query.snippet);
+            const docSnap = await getDoc(docRef);
+            const docSnapData = docSnap.data()
+
+            console.log(docSnapData)
+
+            if (localStorage.getItem("has_viewed_" + router.query.snippet)) {
+
+            } else {
               // @ts-ignore
               await updateDoc(doc(db, "snippet_stats", router.query.snippet), {
                 // @ts-ignore
-                views: parseInt(parseInt(snippetStats.views) + 1),
+                views: parseInt(parseInt(docSnapData.views) + 1),
               });
 
               localStorage.setItem(
@@ -101,21 +110,21 @@ export default function Snippet() {
                 "true"
               );
             }
-          }
 
-          if (
-            localStorage.getItem("has_viewed_" + router.query.snippet) !=
-            undefined
-          ) {
             if (
-              localStorage.getItem("has_liked_" + router.query.snippet) ==
-              "true"
+              localStorage.getItem("has_liked_" + router.query.snippet) !=
+              null
             ) {
-              setHasLiked(true);
+              if (
+                localStorage.getItem("has_liked_" + router.query.snippet) ==
+                "true"
+              ) {
+                setHasLiked(true);
+              }
             }
           }
         }
-      }
+
     };
 
     checkLocalStorage();
@@ -189,8 +198,13 @@ export default function Snippet() {
             </div>
             {/* @ts-ignore */}
             <div className="max-w-[700px] prose lg:prose-lg prose-black dark:prose-invert grow">
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm, remarkMath]}
+                rehypePlugins={[rehypeKatex]}
+              >
               {/* @ts-ignore */}
               {snippetData.content}
+              </ReactMarkdown>
             </div>
             <div className="w-full mt-8 mb-8"></div>
             <div className="flex items-center gap-2">
