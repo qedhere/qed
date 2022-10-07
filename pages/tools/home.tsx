@@ -50,7 +50,7 @@ var getRelativeTime = (d1, d2 = new Date()) => {
 export default function ToolsHome() {
   const router = useRouter();
   const [user, loading, error] = useAuthState(auth);
-  const [snippets, setSnippets] = React.useState<any>(undefined);
+  const [snippets, setSnippets] = React.useState<any>([]);
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -72,7 +72,6 @@ export default function ToolsHome() {
             collection(db, "snippets", user.uid, "snippets")
           );
           if (querySnapshot.size != 0) {
-            setSnippets([]);
             querySnapshot.forEach(async (snapDoc) => {
               const pubSnipRef = doc(db, "public_snippets", snapDoc.id);
               const snipStatsRef = doc(db, "snippet_stats", snapDoc.id);
@@ -84,7 +83,7 @@ export default function ToolsHome() {
                 stats: snipStatsSnap.data(),
               };
               try {
-                if (snippets.length < querySnapshot.size){
+                if (!snippets.includes(snipObj)){
                   // @ts-ignore
                   setSnippets((oldArray) => [snipObj, ...oldArray]);
                 }
@@ -116,7 +115,7 @@ export default function ToolsHome() {
           <div className="text-sm text-gray-500 pt-2">
             <EyeIcon /> Your snippets are public
           </div>
-          {snippets != undefined ? (
+          {snippets != [] ? (
             <div className="mt-5 flex flex-wrap gap-5">
               <button
                 className="border-2 border-dashed rounded-xl w-[128px] h-[128px] dark:border-neutral-700 flex items-center justify-center dark:hover:bg-neutral-800 hover:bg-neutral-100 text-black-300 duration-200"
@@ -127,7 +126,7 @@ export default function ToolsHome() {
               {snippets.map((snip: any) => {
                 return (
                   <button
-                    className="duration-200 flex flex-col justify-start align-start p-4 rounded-xl bg-neutral-800 max-w-[300px] hover:bg-black-700"
+                    className="duration-200 h-[128px] flex flex-col justify-start align-start p-4 rounded-xl dark:bg-neutral-800 dark:hover:bg-black-700 bg-neutral-100 hover:bg-black-200"
                     onClick={() => router.push("/tools/snippets/" + snip.id)}
                     key={snip.id}
                   >
