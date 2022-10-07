@@ -89,6 +89,7 @@ export default function ToolsHome() {
                   setSnippets((oldArray) => [snipObj, ...oldArray]);
                 }
               } catch {
+                // @ts-ignore
                 setSnippets((oldArray) => [snipObj, ...oldArray]);
               }
 
