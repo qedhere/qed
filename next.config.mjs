@@ -17,7 +17,7 @@ const NextConfig = withMDX({
 
 export default NextConfig({
   pageExtensions: ["js", "jsx", "ts", "tsx", "md", "mdx"],
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: {
     domains: ["github.com", "lh3.googleusercontent.com"],
   },

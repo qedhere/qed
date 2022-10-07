@@ -84,82 +84,8 @@ export default function Snippet() {
 
     fetchData();
 
-    const checkLocalStorage = async () => {
-      if (router.query != undefined) {
-        if (JSON.stringify(router.query) != "{}") {
-          // @ts-ignore
-          const docRef = doc(db, "snippet_stats", router.query.snippet);
-          const docSnap = await getDoc(docRef);
-          const docSnapData = docSnap.data();
-
-          console.log(docSnapData);
-
-          if (localStorage.getItem("has_viewed_" + router.query.snippet)) {
-          } else {
-            // @ts-ignore
-            await updateDoc(doc(db, "snippet_stats", router.query.snippet), {
-              // @ts-ignore
-              views: parseInt(parseInt(docSnapData.views) + 1),
-            });
-
-            localStorage.setItem("has_viewed_" + router.query.snippet, "true");
-          }
-
-          if (
-            localStorage.getItem("has_liked_" + router.query.snippet) != null
-          ) {
-            if (
-              localStorage.getItem("has_liked_" + router.query.snippet) ==
-              "true"
-            ) {
-              setHasLiked(true);
-            }
-          }
-        }
-      }
-    };
-
-    checkLocalStorage();
-
-    const subscribeData = async () => {
-      if (router.query != undefined) {
-        if (JSON.stringify(router.query) != "{}") {
-          // @ts-ignore
-          const unsub = onSnapshot(
-            // @ts-ignore
-            doc(db, "snippet_stats", router.query.snippet),
-            (doc) => {
-              // @ts-ignore
-              setSnippetStats(doc.data());
-            }
-          );
-        }
-      }
-    };
-
-    subscribeData();
     // @ts-ignore
   }, [router]);
-
-  const likeSnippet = async () => {
-    if (hasLiked == false) {
-      setHasLiked(true);
-      localStorage.setItem("has_liked_" + router.query.snippet, "true");
-      // @ts-ignore
-      await updateDoc(doc(db, "snippet_stats", router.query.snippet), {
-        // @ts-ignore
-        likes: parseInt(parseInt(snippetStats.likes) + 1),
-      });
-    } else {
-      setHasLiked(false);
-      localStorage.setItem("has_liked_" + router.query.snippet, "false");
-      // @ts-ignore
-      await updateDoc(doc(db, "snippet_stats", router.query.snippet), {
-        // @ts-ignore
-        likes: parseInt(parseInt(snippetStats.likes) - 1),
-      });
-    }
-  };
 
   if (isLoading) {
     return (
@@ -245,9 +171,7 @@ export default function Snippet() {
               </div>
             </div>
           </div>
-
         </div>
-        <div className="md:h-[256px] h-[128px] w-full"></div>
       </div>
     );
   }
