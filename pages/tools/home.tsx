@@ -83,8 +83,16 @@ export default function ToolsHome() {
                 data: pubSnipRefSnap.data(),
                 stats: snipStatsSnap.data(),
               };
-              // @ts-ignore
-              setSnippets((oldArray) => [snipObj, ...oldArray]);
+              try {
+                if (snippets.length < querySnapshot.size){
+                  // @ts-ignore
+                  setSnippets((oldArray) => [snipObj, ...oldArray]);
+                }
+              } catch {
+                setSnippets((oldArray) => [snipObj, ...oldArray]);
+              }
+
+
             });
           } else {
             setSnippets(undefined);

@@ -69,20 +69,20 @@ export default function NewSnippet() {
   return (
     <div>
       <Header />
-      <div className="w-[full] md:h-[200px] h-[64px]"></div>
-      <div className="flex justify-center">
+      <div className="w-[full] sm:h-[200px] h-[64px]"></div>
+      <div className="flex justify-center pl-4 pr-4">
         <input
           onChange={(event) => setSnippetTitle(event.target.value)}
           placeholder="Snippet Title"
           className="outline-none max-w-[700px] w-full placeholder:text-neutral-300 bg-transparent dark:placeholder:text-black-700 font-bold placeholder:tracking-tighter tracking-tighter text-4xl"
         ></input>
       </div>
-      <div className="w-full flex justify-center mt-2">
+      <div className="w-full flex justify-center mt-2 pl-4 pr-4">
         <div className="max-w-[700px] w-full p-0 font-mono text-sm text-black-300">
           {snippetUID}
         </div>
       </div>
-      <div className="w-full flex justify-center mt-8 mb-8">
+      <div className="w-full flex justify-center mt-8 mb-8 pl-4 pr-4">
         <div className="max-w-[700px] h-[1px] bg-neutral-200 dark:bg-neutral-800 w-full p-0"></div>
       </div>
       <div className="w-full flex justify-center pl-4 pr-4">
@@ -105,7 +105,7 @@ export default function NewSnippet() {
           style={{ resize: "none" }}
         />
       </div>
-      <div className="w-full flex justify-center items-center mt-8 mb-8">
+      <div className="w-full flex justify-center items-center mt-8 mb-8 pl-4 pr-4">
         <div className="max-w-[700px] w-full p-0 flex items-center">
           <div className="flex items-center gap-2 dark:text-black-500 text-black-300">
             <EyeIcon /> This snippet is public
