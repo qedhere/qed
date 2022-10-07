@@ -142,7 +142,6 @@ export default function Snippet() {
                   <div className="flex items-center gap-2 group text-pink-500">
                     <button
                       className="hover:bg-[rgba(236,72,153,0.1)] rounded-full w-[32px] h-[32px] flex items-center justify-center duration-200"
-                      onClick={likeSnippet}
                     >
                       <HeartFillIcon size={18} />
                     </button>{" "}
@@ -153,7 +152,6 @@ export default function Snippet() {
                   <div className="flex items-center gap-2 text-gray-500 group hover:text-pink-400 duration-200">
                     <button
                       className="hover:bg-[rgba(236,72,153,0.1)] rounded-full w-[32px] h-[32px] flex items-center justify-center duration-200"
-                      onClick={likeSnippet}
                     >
                       <HeartIcon size={18} />
                     </button>{" "}
