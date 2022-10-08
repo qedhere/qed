@@ -221,7 +221,7 @@ export default function Snippet() {
                       <HeartFillIcon size={18} />
                     </button>{" "}
                     {/* @ts-ignore */}
-                    {snippetStats.likes}
+                    {snippetStats.likes ? snippetStats.likes : 0}
                   </div>
                 ) : (
                   <div className="flex items-center gap-2 text-gray-500 group hover:text-pink-400 duration-200">
@@ -232,7 +232,7 @@ export default function Snippet() {
                       <HeartIcon size={18} />
                     </button>{" "}
                     {/* @ts-ignore */}
-                    {snippetStats.likes}
+                    {snippetStats.likes ? snippetStats.likes : 0}
                   </div>
                 )}
                 <div className="flex items-center gap-2 text-gray-500">
@@ -240,12 +240,13 @@ export default function Snippet() {
                     <EyeIcon size={18} />
                   </div>{" "}
                   {/* @ts-ignore */}
-                  {snippetStats.views}
+                  {snippetStats.views ? snippetStats.views : 0}
                 </div>
               </div>
             </div>
           </div>
         </div>
+        <div className="md:h-[256px] h-[128px] w-full"></div>
       </div>
     );
   }
