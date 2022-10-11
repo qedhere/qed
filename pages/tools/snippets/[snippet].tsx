@@ -189,7 +189,7 @@ export default function Snippet() {
               <div className="max-w-[700px] h-[1px] bg-neutral-200 dark:bg-neutral-800 w-full p-0"></div>
             </div>
             {/* @ts-ignore */}
-            <div className="max-w-[700px] prose lg:prose-lg prose-black dark:prose-invert grow">
+            <div className="max-w-[700px] prose lg:prose-lg prose-black dark:prose-invert grow prose-img:rounded-xl">
               <ReactMarkdown
                 remarkPlugins={[remarkGfm, remarkMath]}
                 rehypePlugins={[rehypeKatex]}
