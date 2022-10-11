@@ -1,5 +1,5 @@
 import * as React from "react";
-import Header from "@components/Header/Header";
+import { useTheme } from "next-themes";
 
 import "@firebase/firebase";
 import {
@@ -14,7 +14,7 @@ const db = getFirestore();
 
 import { Loading, Avatar } from "@geist-ui/core";
 
-import { HeartIcon, EyeIcon, HeartFillIcon } from "@primer/octicons-react";
+import { HeartIcon, EyeIcon, HeartFillIcon, MoonIcon, SunIcon } from "@primer/octicons-react";
 
 var units = {
   year: 24 * 60 * 60 * 1000 * 365,
@@ -51,6 +51,8 @@ export default function Snippet() {
   const [snippetStats, setSnippetStats] = React.useState();
   const [isLoading, setIsLoading] = React.useState(true);
   const [hasLiked, setHasLiked] = React.useState(false);
+  const [currentTheme, setCurrentTheme] = React.useState<any | null>(null);
+  const { theme, setTheme } = useTheme();
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -137,6 +139,10 @@ export default function Snippet() {
       }
     };
 
+    if (typeof theme != undefined) {
+      setCurrentTheme(theme);
+    }
+
     subscribeData();
     // @ts-ignore
   }, [router]);
@@ -164,7 +170,6 @@ export default function Snippet() {
   if (isLoading) {
     return (
       <div>
-        <Header />
         <div className="md:h-[400px] h-[200px] w-full"></div>
         <Loading scale={2} />
       </div>
@@ -172,18 +177,43 @@ export default function Snippet() {
   } else {
     return (
       <div>
-        <Header />
-        <div className="md:h-[256px] h-[128px] w-full"></div>
+        <div className="md:h-[128px] h-[64px] w-full"></div>
         <div className="flex justify-center pl-4 pr-4">
           <div className="max-w-[700px] w-full">
             {/* @ts-ignore */}
-            <div className="sm:text-4xl text-3xl tracking-tighter font-bold">
-              {/* @ts-ignore */}
-              {snippetData.title}
-            </div>
-            {/* @ts-ignore */}
-            <div className="font-mono text-sm text-black-300 mt-2">
-              {router.query.snippet}
+            <div className="flex items-center h-fit">
+              <div>
+                <div className="sm:text-4xl text-3xl tracking-tighter font-bold">
+                  {/* @ts-ignore */}
+                  {snippetData.title}
+                </div>
+                {/* @ts-ignore */}
+                <div className="font-mono text-sm text-black-300 mt-2">
+                  {router.query.snippet}
+                </div>
+              </div>
+              <div className="grow"></div>
+              {
+              currentTheme == "light" ? (
+                <button
+                  onClick={() => {
+                    setTheme("dark"); setCurrentTheme("dark")
+                  }}
+                  className="text-black-300 hover:text-black-500 duration-200"
+                >
+                  <SunIcon size={24} />
+                </button>
+              ) : (
+                <button
+                  onClick={() => {
+                    setTheme("light"); setCurrentTheme("light")
+                  }}
+                  className="text-black-500 hover:text-black-300 duration-200"
+                >
+                  <MoonIcon size={24} />
+                </button>
+              )
+              }
             </div>
             <div className="w-full flex justify-center mt-8 mb-8">
               <div className="max-w-[700px] h-[1px] bg-neutral-200 dark:bg-neutral-800 w-full p-0"></div>
@@ -221,7 +251,7 @@ export default function Snippet() {
                       <HeartFillIcon size={18} />
                     </button>{" "}
                     {/* @ts-ignore */}
-                    {snippetStats.likes ? snippetStats.likes : 0}
+                    {snippetStats ? snippetStats.likes : 0}
                   </div>
                 ) : (
                   <div className="flex items-center gap-2 text-gray-500 group hover:text-pink-400 duration-200">
@@ -232,7 +262,7 @@ export default function Snippet() {
                       <HeartIcon size={18} />
                     </button>{" "}
                     {/* @ts-ignore */}
-                    {snippetStats.likes ? snippetStats.likes : 0}
+                    {snippetStats ? snippetStats.likes : 0}
                   </div>
                 )}
                 <div className="flex items-center gap-2 text-gray-500">
@@ -240,13 +270,17 @@ export default function Snippet() {
                     <EyeIcon size={18} />
                   </div>{" "}
                   {/* @ts-ignore */}
-                  {snippetStats.views ? snippetStats.views : 0}
+                  {snippetStats ? snippetStats.views : 0}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="md:h-[256px] h-[128px] w-full"></div>
+        <div className="md:h-[128px] h-[64px] w-full"></div>
+        <div className="w-full flex justify-center text-neutral-300 dark:text-black-600 text-xl gap-1 items-center text-2xl tracking-tight font-semibold">
+          <button className="font-black tracking-tight dark:hover:text-black-500 duration-200 hover:text-neutral-400"><a href="https://qed.vercel.app" target="_blank" rel="noopener noreferrer">QED</a></button>
+        </div>
+        <div className="md:h-[128px] h-[64px] w-full"></div>
       </div>
     );
   }
